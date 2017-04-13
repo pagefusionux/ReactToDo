@@ -1,28 +1,12 @@
-# ReactBoilerplate3
+# ReactTodo
 
-PHPStorm Setup:
-- Duplicate directory structure from 'ReactBoilerplate3' to [projectname]
-- Rename project. (File > Rename Project)
-- Refactor project name. (Project Tab > [right click on projectname] > Refactor > Rename > Rename Project)
-
-Git setup:
-- Go to https://github.com/pagefusionux
-- Create new repository [projectname]
-- In [projectname] directory:
-  - `$ rm -rf .git`
-  - `$ git init`
-  - `$ git add -A`
-  - `$ git commit -m 'Initial commit.'`
-  - `$ git remote add origin https://github.com/pagefusionux/[projectname].git`
-  - `$ git push -u origin master`
-
-Setup npm package requirements as specified in packages.json:
-- `$ npm install`
-
-Start express server (have following processes running concurrently):
-- (open tab): `$ webpack -w`
-- (open tab): `$ node server.js`
-- Go to: localhost:3000 (you should see "Boilerplate ready." output to the screen)
+After cloning the ReactBoilerplate3 repository and downloading its '.git' directory, you can do
+the following commands to change the destination of origin to a new 'ReactToDo' repo for this project
+(make sure the ReactToDo repo is set up on github.com first):
+- `$ git remote -v` (see how origin is currently setup)
+- `$ git remote rm origin`
+- `$ git remote add origin https://github.com/pagefusionux/ReactToDo.git`
+- `$ git push -u origin master`
 
 ---
 Udemy Tutorial:
