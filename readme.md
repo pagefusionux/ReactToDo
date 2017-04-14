@@ -11,6 +11,10 @@ the following commands to change the destination of origin to a new 'ReactToDo' 
 Add UUID library for unique IDs:
 - `$ npm install node-uuid --save-dev`
 
+Add existence of api folder to webpack:
+- edit webpack.config.js, add under modulesDirectories array:
+  - './app/api'
+
 ---
 Udemy Tutorial:
 https://www.udemy.com/the-complete-react-web-app-developer-course

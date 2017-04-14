@@ -1,30 +1,21 @@
 const React = require('react');
-const TodoSearch = require('TodoSearch');
+const uuid = require('node-uuid');
+
 const TodoList = require('TodoList');
 const AddTodo = require('AddTodo');
-const uuid = require('node-uuid');
+const TodoSearch = require('TodoSearch');
+const TodoAPI = require('TodoAPI');
 
 const TodoApp = React.createClass({
   getInitialState: function() {
     return {
       showCompleted: false,
       searchText: '',
-      todos: [
-        {
-          id: uuid(),
-          text: 'Walk the dog.'
-        }, {
-          id: uuid(),
-          text: 'Clean the yard.'
-        }, {
-          id: uuid(),
-          text: 'Ignore wife.'
-        }, {
-          id: uuid(),
-          text: 'Neglect child.'
-        }
-      ]
+      todos: TodoAPI.getTodos()
     };
+  },
+  componentDidUpdate: function() { // fired after state (or props) change
+    TodoAPI.setTodos(this.state.todos);
   },
   handleAddTodo: function (text) {
     this.setState({ // update todos array adding a new item (object) on the end of the array
@@ -33,9 +24,26 @@ const TodoApp = React.createClass({
         {
           id: uuid(), // generate random ID
           text: text,
+          completed: false,
         }
       ]
     });
+  },
+  handleToggle: function (id) {
+    // loop through all todos (find id, change stuff)
+    const updatedTodos = this.state.todos.map((todo) => {
+
+      if (todo.id === id) {
+        todo.completed = !todo.completed;
+      }
+
+      return todo;
+    });
+
+    this.setState({
+      todos: updatedTodos
+    });
+
   },
   handleSearch: function (showCompleted, searchText) {
     this.setState({
@@ -44,7 +52,9 @@ const TodoApp = React.createClass({
     });
   },
   render: function () {
-    const {todos} = this.state;
+    const {todos, showCompleted, searchText} = this.state;
+
+    const filteredTodos = TodoAPI.filterTodos(todos, showCompleted, searchText);
 
     return (
       <div>
@@ -52,7 +62,7 @@ const TodoApp = React.createClass({
           <div className="small-centered medium-6 large-4 columns">
             <h2 className="title">Todo App</h2>
             <TodoSearch onSearch={this.handleSearch} />
-            <TodoList todos={todos}/>
+            <TodoList todos={filteredTodos} onToggle={this.handleToggle}/>
             <AddTodo onAddTodo={this.handleAddTodo}/>
           </div>
         </div>
