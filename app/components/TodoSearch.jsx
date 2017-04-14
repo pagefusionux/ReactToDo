@@ -12,7 +12,6 @@ const TodoSearch = React.createClass({
       <div>
         <div>
           <input type="search" ref="searchText" placeholder="Search todos" onChange={this.handleSearch}/>
-
         </div>
         <div>
           <label>
