@@ -8,6 +8,9 @@ the following commands to change the destination of origin to a new 'ReactToDo' 
 - `$ git remote add origin https://github.com/pagefusionux/ReactToDo.git`
 - `$ git push -u origin master`
 
+Add UUID library for unique IDs:
+- `$ npm install node-uuid --save-dev`
+
 ---
 Udemy Tutorial:
 https://www.udemy.com/the-complete-react-web-app-developer-course
