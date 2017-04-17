@@ -6,11 +6,17 @@ const TodoList = React.createClass({
     const {todos} = this.props;
 
     const renderTodos = () => {
-      return todos.map((todo) => {
+      if (todos.length === 0) {
         return (
-          <Todo key={todo.id} {...todo} onToggle={this.props.onToggle}/> // all attributes passed using spread operator (key attribute required here!)
+          <p className="container__message">Nothing To Do</p>
         );
-      });
+      } else {
+        return todos.map((todo) => {
+          return (
+            <Todo key={todo.id} {...todo} onToggle={this.props.onToggle}/> // all attributes passed using spread operator (key attribute required here!)
+          );
+        });
+      }
     };
 
     return (

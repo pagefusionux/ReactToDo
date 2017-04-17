@@ -6,9 +6,12 @@
 @import "foundation";
 @include foundation-everything;
 
+// globals
+@import "components/container";
+
 // JSX components
 @import "components/todo-app";
-@import "components/search";
+@import "components/todo-search";
 @import "components/todo-list";
 @import "components/todo";
 @import "components/add-todo";
