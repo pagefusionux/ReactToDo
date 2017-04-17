@@ -36,7 +36,6 @@ module.exports = {
       return searchText.length === 0 || todoText.indexOf(searchText) > -1;
     });
 
-
     // sort todos with non-completed first
     filteredTodos.sort((a, b) => {
       // return -1; // a should come before b
