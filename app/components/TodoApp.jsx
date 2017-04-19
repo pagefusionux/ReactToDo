@@ -38,7 +38,8 @@ const TodoApp = React.createClass({
 
       if (todo.id === id) {
         todo.completed = !todo.completed;
-        todo.completedAt = todo.completed ? moment.unix() : undefined;
+        todo.completedAt = todo.completed ? moment().unix() : undefined;
+        //console.log('completed at: ', todo.completedAt);
       }
 
       return todo;

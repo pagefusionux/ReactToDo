@@ -18,6 +18,8 @@ Add existence of api folder to webpack:
 See momentjs.com for adding date functionality:
 - `npm install moment@2.12.0 --save-dev`
 
+Installing Redux:
+- 
 
 ---
 Udemy Tutorial:
