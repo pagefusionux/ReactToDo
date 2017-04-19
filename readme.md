@@ -18,14 +18,19 @@ Add existence of api folder to webpack:
 See momentjs.com for adding date functionality:
 - `npm install moment@2.12.0 --save-dev`
 
-Installing Redux:
-- 
-
+Integrating Redux:
+- `$ npm install redux@3.3.1 deep-freeze-strict --save-dev`
 - Add 'app/actions' folder:
   - Change webpack.config.js to add alias:
-  `actions: 'app/actions/actions.jsx'`
   
+    `actions: 'app/actions/actions.jsx',`
+  
+- Add 'app/reducers' folder:
+  - Change webpack.config.js to add alias:
+  
+    `reducers: 'app/reducers/reducers.jsx',`
 
+  
 ---
 Udemy Tutorial:
 https://www.udemy.com/the-complete-react-web-app-developer-course

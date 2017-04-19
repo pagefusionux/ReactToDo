@@ -1,3 +1,7 @@
+/*
+* Redux: action generators
+* */
+
 export const setSearchText = (searchText) => {
   return {
     type: 'SET_SEARCH_TEXT',
@@ -11,7 +15,7 @@ export const toggleShowCompleted = () => {
   }
 };
 
-export const addTodo = (todo) => {
+export const addTodo = (text) => {
   return {
     type: 'ADD_TODO',
     text
