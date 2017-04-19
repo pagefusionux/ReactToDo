@@ -1,9 +1,11 @@
 const React = require('react');
+const {connect} = require('react-redux'); // connects to Provider
 const moment = require('moment');
+const actions = require('actions'); // dispatch actions
 
-const Todo = React.createClass({
+export const Todo = React.createClass({
   render: function () {
-    const {id, text, completed, createdAt, completedAt} = this.props;
+    const {id, text, completed, createdAt, completedAt, dispatch} = this.props; // integrated connect() below
     const todoClassName = completed ? 'todo todo-completed' : 'todo';
 
 
@@ -21,7 +23,8 @@ const Todo = React.createClass({
 
     return (
       <div className={todoClassName} onClick={() => {
-        this.props.onToggle(id);
+        //this.props.onToggle(id);
+        dispatch(actions.toggleTodo(id)); // dispatch action (from actions module)
       }}>
         <div>
           <input type="checkbox" checked={completed}/>
@@ -35,4 +38,6 @@ const Todo = React.createClass({
   }
 });
 
-module.exports = Todo;
+export default connect()(Todo);
+
+//module.exports = connect()(Todo); // didn't need to grab anything from the state

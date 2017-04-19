@@ -2,9 +2,11 @@ const React = require('react');
 const uuid = require('node-uuid');
 const moment = require('moment');
 
-const TodoList = require('TodoList');
-const AddTodo = require('AddTodo');
-const TodoSearch = require('TodoSearch');
+//const TodoList = require('TodoList');
+//const AddTodo = require('AddTodo');
+import TodoList from 'TodoList';
+import AddTodo from 'AddTodo';
+import TodoSearch from 'TodoSearch';
 const TodoAPI = require('TodoAPI');
 
 const TodoApp = React.createClass({
@@ -17,20 +19,6 @@ const TodoApp = React.createClass({
   },
   componentDidUpdate: function() { // fired after state (or props) change
     TodoAPI.setTodos(this.state.todos);
-  },
-  handleAddTodo: function (text) {
-    this.setState({ // update todos array adding a new item (object) on the end of the array
-      todos: [
-        ...this.state.todos, // what it as before
-        {
-          id: uuid(), // generate random ID
-          text: text,
-          completed: false,
-          createdAt: moment().unix(),
-          completedAt: undefined,
-        }
-      ]
-    });
   },
   handleToggle: function (id) {
     // loop through all todos (find id, change stuff)
@@ -68,8 +56,8 @@ const TodoApp = React.createClass({
           <div className="small-centered small-11 medium-6 large-5 columns">
             <div className="container">
               <TodoSearch onSearch={this.handleSearch} />
-              <TodoList todos={filteredTodos} onToggle={this.handleToggle}/>
-              <AddTodo onAddTodo={this.handleAddTodo}/>
+              <TodoList/> {/* no properties needed because of redux Provider */}
+              <AddTodo/>
             </div>
           </div>
         </div>

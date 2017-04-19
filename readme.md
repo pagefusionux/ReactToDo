@@ -19,7 +19,7 @@ See momentjs.com for adding date functionality:
 - `npm install moment@2.12.0 --save-dev`
 
 Integrating Redux:
-- `$ npm install redux@3.3.1 deep-freeze-strict --save-dev`
+- `$ npm install redux@3.3.1 react-redux@4.4.1 deep-freeze-strict --save-dev`
 - Add 'app/actions' folder:
   - Create 'app/actions/actions.jsx'
   - Change webpack.config.js to add alias:
