@@ -21,6 +21,11 @@ See momentjs.com for adding date functionality:
 Installing Redux:
 - 
 
+- Add 'app/actions' folder:
+  - Change webpack.config.js to add alias:
+  `actions: 'app/actions/actions.jsx'`
+  
+
 ---
 Udemy Tutorial:
 https://www.udemy.com/the-complete-react-web-app-developer-course
