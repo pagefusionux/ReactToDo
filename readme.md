@@ -18,6 +18,8 @@ Add existence of api folder to webpack:
 See momentjs.com for adding date functionality:
 - `npm install moment@2.12.0 --save-dev`
 
+---
+
 Integrating Redux:
 - `$ npm install redux@3.3.1 react-redux@4.4.1 deep-freeze-strict --save-dev`
 - Add 'app/actions' folder:
@@ -37,8 +39,30 @@ Integrating Redux:
   - Change webpack.config.js to add alias:
     
     `configureStore: 'app/store/configureStore.jsx',`
-    
+
+---
+
+Setting up Firebase:
+- Create an account on firebase.com (or use Google account)
+- `$ npm install firebase@3.0.2` --save
+- add 'app/firebase' folder
+  - add 'app/firebase/index.jsx'
+  - add to webpack.config.js:
   
+  ````
+  
+  ````
+
+Setting up redux-thunk:
+- `$ npm install redux-thunk@2.1.0 --save-dev`
+
+Setting up redux-mock-store (for testing):
+- `$ npm install redux-mock-store@1.0.3 --save-dev`
+
+
+
+
+
 ---
 Udemy Tutorial:
 https://www.udemy.com/the-complete-react-web-app-developer-course

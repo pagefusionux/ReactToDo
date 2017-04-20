@@ -11,7 +11,8 @@ export const AddTodo = React.createClass({
     if (todoText.length > 0) {
       this.refs.todoText.value = ''; // clear out value
       //this.props.onAddTodo(todoText);
-      dispatch(actions.addTodo(todoText));
+      //dispatch(actions.addTodo(todoText));
+      dispatch(actions.startAddTodo(todoText)); // uses new asynchronous 'thunk' to get Firebase data
     } else {
       this.refs.todoText.focus(); // nice UX thing
     }
