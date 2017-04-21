@@ -47,10 +47,10 @@ Setting up Firebase:
 - `$ npm install firebase@3.0.2` --save
 - add 'app/firebase' folder
   - add 'app/firebase/index.jsx'
-  - add to webpack.config.js:
+  - add to webpack.config.js under 'alias':
   
   ````
-  
+  app: 'app', // the alias to end all aliases
   ````
 
 Setting up redux-thunk:
@@ -59,7 +59,11 @@ Setting up redux-thunk:
 Setting up redux-mock-store (for testing):
 - `$ npm install redux-mock-store@1.0.3 --save-dev`
 
-
+Setting up difference environment (variables):
+- `$ npm install node-env-file@0.1.8 --save`
+- create directory /config
+  - create file /config/test.env
+  - create file /config/development.env
 
 
 

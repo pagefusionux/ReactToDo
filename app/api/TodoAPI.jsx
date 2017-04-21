@@ -1,6 +1,7 @@
 const $ = require('jQuery');
 
 module.exports = {
+  /*
   setTodos: function(todos) {
     if ($.isArray(todos)) {
       localStorage.setItem('todos', JSON.stringify(todos)); // localStorage just stores strings
@@ -19,6 +20,7 @@ module.exports = {
 
     return $.isArray(todos) ? todos : [];
   },
+  */
   filterTodos: function (todos, showCompleted, searchText) {
     let filteredTodos = todos;
 

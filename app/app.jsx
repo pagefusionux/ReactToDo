@@ -16,16 +16,23 @@ const TodoAPI = require('TodoAPI');
 
 //import './../playground/firebase/index';
 
+/*
 store.subscribe(() => {
   let state = store.getState();
   console.log('New state:', state);
 
-  TodoAPI.setTodos(state.todos);
+  TodoAPI.setTodos(state.todos); // set to localStorage
 });
+*/
 
-// load in saved todos
+// load in saved todos from localStorage
+/*
 const initialTodos = TodoAPI.getTodos();
 store.dispatch(actions.addTodos(initialTodos));
+*/
+
+// load in todos from Firebase, pass to store
+store.dispatch(actions.startAddTodos());
 
 // dispatch actions (defaults)
 //store.dispatch(actions.addTodo('Clean the yard.'));

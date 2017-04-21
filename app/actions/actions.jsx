@@ -56,10 +56,11 @@ export const startAddTodo = (text) => {
   };
 };
 
-export const toggleTodo = (id) => {
+export const updateTodo = (id, updates) => {
   return {
-    type: 'TOGGLE_TODO',
-    id
+    type: 'UPDATE_TODO',
+    id,
+    updates
   };
 };
 
@@ -67,5 +68,41 @@ export const addTodos = (todos) => {
   return {
     type: 'ADD_TODOS',
     todos
+  };
+};
+
+export const startAddTodos = () => {
+  return (dispatch, getState) => {
+    let todosRef = firebaseRef.child('todos');
+
+    return todosRef.once('value').then((snapshot) => {
+      let todos = snapshot.val() || {};
+      let parsedTodos = []; // pass to redux (because it expects an array of todos)
+
+      // convert returned firebase object to array
+      Object.keys(todos).forEach((todoId) => {
+        parsedTodos.push({
+          id: todoId,
+          ...todos[todoId]
+        });
+      });
+
+      dispatch(addTodos(parsedTodos)); // pass firebase data to app for display
+    });
+  };
+};
+
+export const startToggleTodo = (id, completed) => {
+  return (dispatch, getState) => {
+    const todoRef = firebaseRef.child(`todos/${id}`);
+    const updates = {
+      completed,
+      completedAt: completed ? moment().unix() : null
+    };
+
+    return todoRef.update(updates).then(() => { // reflect the update in the app
+      dispatch(updateTodo(id, updates));
+    });
+
   };
 };
