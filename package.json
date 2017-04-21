@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "NODE_ENV=test karma start",
-    "build": "webpack", // -p left off because of Heroku problems
+    "build": "webpack",
     "start": "npm run build && node server.js"
   },
   "author": "Chris Davis",

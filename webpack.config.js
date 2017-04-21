@@ -11,6 +11,7 @@ const envFile = require('node-env-file');
 
 process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 
+// moved our credentials out of our repo (so people can't get 'em)
 try {
   envFile(path.join(__dirname, 'config/' + process.env.NODE_ENV + '.env'))
 } catch (e) {
@@ -42,7 +43,9 @@ module.exports = {
         API_KEY: JSON.stringify(process.env.API_KEY),
         AUTH_DOMAIN: JSON.stringify(process.env.AUTH_DOMAIN),
         DATABASE_URL: JSON.stringify(process.env.DATABASE_URL),
+        PROJECT_ID: JSON.stringify(process.env.PROJECT_ID),
         STORAGE_BUCKET: JSON.stringify(process.env.STORAGE_BUCKET),
+        PROJECT_ID: JSON.stringify(process.env.PROJECT_ID),
       }
     })
   ],

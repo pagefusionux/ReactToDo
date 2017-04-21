@@ -2,13 +2,13 @@ import firebase from 'firebase';
 
 try {
   // Initialize Firebase
-  var config = {
+  const config = {
     apiKey: process.env.API_KEY,
     authDomain: process.env.AUTH_DOMAIN,
     databaseURL: process.env.DATABASE_URL,
-    //projectId: "todoapp-5f148",
+    projectId: process.env.PROJECT_ID,
     storageBucket: process.env.STORAGE_BUCKET,
-    //messagingSenderId: "825264400759"
+    messagingSenderId: process.env.MESSAGING_SENDER_ID,
   };
 
   firebase.initializeApp(config);
@@ -18,6 +18,9 @@ try {
 
 
 }
+
+// set up OAuth with Github
+export const githubProvider = new firebase.auth.GithubAuthProvider();
 
 // get reference to DB
 export const firebaseRef = firebase.database().ref();
