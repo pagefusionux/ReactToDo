@@ -45,7 +45,9 @@ export const startAddTodo = (text) => {
       createdAt: moment().unix(),
       completedAt: null
     };
-    const todoRef = firebaseRef.child('todos').push(todo); // object now added to Firebase
+
+    const uid = getState().auth.uid;
+    const todoRef = firebaseRef.child(`users/${uid}/todos`).push(todo); // object now added to Firebase
 
     // now, update store which will update the browser output
     return todoRef.then(() => { // return to chain then() promise
@@ -74,7 +76,8 @@ export const addTodos = (todos) => {
 
 export const startAddTodos = () => {
   return (dispatch, getState) => {
-    let todosRef = firebaseRef.child('todos');
+    const uid = getState().auth.uid;
+    let todosRef = firebaseRef.child(`users/${uid}/todos`);
 
     return todosRef.once('value').then((snapshot) => {
       let todos = snapshot.val() || {};
@@ -95,7 +98,8 @@ export const startAddTodos = () => {
 
 export const startToggleTodo = (id, completed) => {
   return (dispatch, getState) => {
-    const todoRef = firebaseRef.child(`todos/${id}`);
+    const uid = getState().auth.uid;
+    const todoRef = firebaseRef.child(`users/${uid}/todos/${id}`);
     const updates = {
       completed,
       completedAt: completed ? moment().unix() : null

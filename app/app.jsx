@@ -18,6 +18,7 @@ import router from 'app/router/'
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
     store.dispatch(actions.login(user.uid));
+    store.dispatch(actions.startAddTodos()); // load in user's todos from Firebase, pass to store
     hashHistory.push('/todos'); // redirect them to 'todos'
   } else {
     store.dispatch(actions.logout());
@@ -41,9 +42,6 @@ store.subscribe(() => {
 const initialTodos = TodoAPI.getTodos();
 store.dispatch(actions.addTodos(initialTodos));
 */
-
-// load in todos from Firebase, pass to store
-store.dispatch(actions.startAddTodos());
 
 // dispatch actions (defaults)
 //store.dispatch(actions.addTodo('Clean the yard.'));
