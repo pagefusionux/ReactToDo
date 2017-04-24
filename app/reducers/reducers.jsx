@@ -24,7 +24,7 @@ export const showCompletedReducer = (state = false, action) => {
   }
 };
 
-export const todosReducer = (state = [], action) => {
+export const todosReducer = (state = [], action) => { // manages array of todos
   switch (action.type) {
     case 'ADD_TODO':
       return [
@@ -47,7 +47,8 @@ export const todosReducer = (state = [], action) => {
         ...state,
         ...action.todos
       ];
-
+    case 'LOGOUT':
+      return [];
     default:
       return state;
   }
