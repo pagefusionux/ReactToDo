@@ -22,8 +22,8 @@ describe('TodoApp', () => {
       </Provider>
     );
 
-    var todoApp = TestUtils.scryRenderedComponentsWithType(provider, TodoApp)[0]
-    var todoList = TestUtils.scryRenderedComponentsWithType(todoApp, TodoList);
+    var todoAppTemp = TestUtils.scryRenderedComponentsWithType(provider, TodoApp)[0]
+    var todoList = TestUtils.scryRenderedComponentsWithType(todoAppTemp, TodoList);
 
     expect(todoList.length).toEqual(1);
   });

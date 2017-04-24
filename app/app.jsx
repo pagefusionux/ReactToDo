@@ -17,8 +17,10 @@ import router from 'app/router/'
 // see if user is logged in or not, redirect accordingly
 firebase.auth().onAuthStateChanged((user) => {
   if (user) {
+    store.dispatch(actions.login(user.uid));
     hashHistory.push('/todos'); // redirect them to 'todos'
   } else {
+    store.dispatch(actions.logout());
     hashHistory.push('/'); // login page
   }
 });
