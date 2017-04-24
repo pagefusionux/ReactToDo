@@ -6,14 +6,22 @@
 const React = require('react');
 const ReactDOM = require('react-dom');
 const {Provider} = require('react-redux');
-const {Route, Router, IndexRoute, hashHistory} = require('react-router');
+const {hashHistory} = require('react-router');
 
 // route/page aliases to be configured in webpack.config.js
-import TodoApp from 'TodoApp';
 const actions = require('actions');
 const store = require('configureStore').configure();
-const TodoAPI = require('TodoAPI');
-import Login from 'Login';
+import firebase from 'app/firebase/';
+import router from 'app/router/'
+
+// see if user is logged in or not, redirect accordingly
+firebase.auth().onAuthStateChanged((user) => {
+  if (user) {
+    hashHistory.push('/todos'); // redirect them to 'todos'
+  } else {
+    hashHistory.push('/'); // login page
+  }
+});
 
 //import './../playground/firebase/index';
 
@@ -46,22 +54,12 @@ $(document).foundation();
 // app css
 require('style!css!sass!applicationStyles');
 
+
+
 // router implementation
 ReactDOM.render(
-  /*
-  <Router history={hashHistory}>
-    <Route path="/" component={TodoApp}>
-
-    </Route>
-  </Router>,
-  */
   <Provider store={store}>
-    <Router history={hashHistory}>
-      <Route path="/">
-        <Route path="todos" component={TodoApp}/>
-        <IndexRoute component={Login}/>
-      </Route>
-    </Router>
+    {router}
   </Provider>,
   document.getElementById('app')
 );
